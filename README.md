@@ -1,6 +1,6 @@
 # RAG Chat + Call — Frontend
 
-React client for the RAG Chat + Call application. See [`docs/FRONTEND_DEVELOPMENT_PLAN.md`](docs/FRONTEND_DEVELOPMENT_PLAN.md) for the full specification and [`docs/WEB_FRONTEND_PR_STANDARDS.md`](docs/WEB_FRONTEND_PR_STANDARDS.md) for the PR rules every change must satisfy.
+React client for the RAG Chat + Call application.
 
 ## Stack
 
