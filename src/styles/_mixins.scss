@@ -1,0 +1,8 @@
+// Parameterized, shared behavior. Use @include focus-ring; where a control
+// needs a consistent keyboard-focus outline.
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}

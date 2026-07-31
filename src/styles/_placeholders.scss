@@ -1,0 +1,20 @@
+// Shared declaration blocks. @extend one of these from a *.module.scss when a
+// component needs the exact same declarations verbatim (single source of truth).
+%card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+%auth_card {
+  @extend %card;
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+%panel {
+  @extend %card;
+  padding: 1.25rem;
+}
