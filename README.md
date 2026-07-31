@@ -62,16 +62,24 @@ Tailwind v4 utilities for one-off layout; **SCSS Modules** (`*.module.scss`) for
 
 Redux Toolkit slices own all shared state; async work uses `createAsyncThunk`. The axios client attaches the JWT, unwraps the `{ success, data, message }` envelope to its inner `data`, and on a `401` clears auth and redirects to the login route. Every mutation reports success/failure — auth submit errors via `<FormError>`, other mutations via `runWithToast`.
 
-## Routes (phase 1)
+## Routes
 
 | Path | Access | Page |
 |---|---|---|
 | `/login`, `/signup` | public (redirects home if already signed in) | Auth pages |
 | `/` | protected | Home (authenticated landing) |
+| `/documents` | protected | Upload + manage documents |
+| `/chat`, `/chat/:id` | protected | RAG chat |
 | `*` | public | Real 404 page |
+
+## Features
+
+- **Documents** (`features/documents`): drag-or-click upload, status badges (`PROCESSING`/`READY`/`FAILED`) with polling while processing, and delete — all via `documentsSlice` + `useDocumentsPage`.
+- **Chat** (`features/chat`): sidebar of past chats (with inline **rename** and **delete**), message bubbles with **source-citation chips**, a composer, and a "no documents yet" notice — via `chatSlice` + `useChatPage`. Sending optimistically appends the user message, then renders the grounded answer. **Enter** sends, **Shift+Enter** adds a newline; a typing indicator shows while the model responds, and the view auto-scrolls to the latest message.
+- **Theme** (`features/theme`): light/dark toggle in the header, persisted to `localStorage` and defaulting to the OS preference; all colors come from CSS custom-property tokens in `styles/_tokens.scss`.
 
 ## Roadmap
 
-- **Phase 1 (this):** foundation + auth (login, signup, session rehydration, route guarding).
-- **Phase 2:** document upload UI and chat.
+- **Phase 1:** foundation + auth (login, signup, session rehydration, route guarding). ✅
+- **Phase 2:** document upload UI and RAG chat. ✅
 - **Phase 3:** realtime voice call (WebRTC).

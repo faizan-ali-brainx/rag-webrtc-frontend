@@ -4,10 +4,12 @@ import { store } from './app/store'
 import { AppRoutes } from './routes/AppRoutes'
 import { ToastHost } from './features/toast/ToastHost'
 import { useSessionRehydration } from './features/auth/hooks/useSessionRehydration'
+import { useApplyTheme } from './features/theme/useApplyTheme'
 
-/** Rehydrates the session, then renders the routed app and the toast host. */
+/** Rehydrates the session, applies the theme, then renders the app. */
 function AppInner() {
   useSessionRehydration()
+  useApplyTheme()
   return (
     <>
       <AppRoutes />

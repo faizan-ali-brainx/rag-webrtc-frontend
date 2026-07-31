@@ -9,3 +9,6 @@ export const ROUTES = {
   CHAT_DETAIL: '/chat/:id',
   CALL: '/call',
 } as const
+
+/** Builds the path to a specific chat conversation. */
+export const chatPath = (id: string): string => `/chat/${id}`
