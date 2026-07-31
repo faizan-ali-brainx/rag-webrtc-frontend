@@ -1,0 +1,60 @@
+// Global stylesheet: design tokens plus the small set of cross-file classes that
+// are referenced as raw strings from more than one component (see
+// FRONTEND_DEVELOPMENT_PLAN.md §8). Imported once in main.tsx.
+@use './tokens';
+@use './mixins' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+// Cross-file form primitives (snake_case). Used directly by TextField and by
+// pages that render raw inputs, so they must be global, not module-scoped.
+.ui_field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.ui_label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.ui_input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  @include focus-ring;
+
+  &[aria-invalid='true'] {
+    border-color: var(--color-danger);
+  }
+}
+
+.ui_field_error {
+  font-size: 0.8rem;
+  color: var(--color-danger);
+}

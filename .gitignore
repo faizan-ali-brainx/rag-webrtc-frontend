@@ -25,3 +25,6 @@ dist-ssr
 
 # local env
 .env
+
+# Local reference docs (dev plans / PR standards) — not part of the codebase
+/docs

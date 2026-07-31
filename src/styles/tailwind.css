@@ -1,0 +1,4 @@
+/* Tailwind v4 entrypoint. Kept as a standalone .css file (not .scss) so Sass
+   never tries to process Tailwind's @theme/@layer output — see
+   FRONTEND_DEVELOPMENT_PLAN.md §8. Imported alongside global.scss in main.tsx. */
+@import 'tailwindcss';
