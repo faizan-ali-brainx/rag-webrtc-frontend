@@ -22,6 +22,7 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 // Cross-file form primitives (snake_case). Used directly by TextField and by

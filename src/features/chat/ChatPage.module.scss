@@ -1,0 +1,8 @@
+.layout {
+  display: flex;
+  height: calc(100vh - 60px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-bg);
+}
