@@ -1,0 +1,27 @@
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.idle {
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+}
+
+.connecting {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.live {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.error {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
