@@ -1,0 +1,31 @@
+.row {
+  display: flex;
+  margin-bottom: 0.75rem;
+}
+
+.user {
+  justify-content: flex-end;
+}
+
+.assistant {
+  justify-content: flex-start;
+}
+
+.bubble {
+  max-width: 75%;
+  margin: 0;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.user .bubble {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+.assistant .bubble {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}

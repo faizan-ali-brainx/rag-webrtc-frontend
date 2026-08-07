@@ -4,6 +4,7 @@ import toastReducer from '../features/toast/toastSlice'
 import documentsReducer from '../features/documents/documentsSlice'
 import chatReducer from '../features/chat/chatSlice'
 import themeReducer from '../features/theme/themeSlice'
+import callReducer from '../features/call/callSlice'
 
 /** The application Redux store. */
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
     documents: documentsReducer,
     chat: chatReducer,
     theme: themeReducer,
+    call: callReducer,
   },
 })
 

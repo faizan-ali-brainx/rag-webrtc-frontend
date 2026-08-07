@@ -16,6 +16,9 @@ export function HeaderNav() {
       <NavLink to={ROUTES.CHAT} className={linkClass}>
         Chat
       </NavLink>
+      <NavLink to={ROUTES.CALL} className={linkClass}>
+        Call
+      </NavLink>
     </nav>
   )
 }

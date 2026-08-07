@@ -47,6 +47,7 @@ src/
 ├── components/   # shared UI: Button, TextField, FormError, Spinner, EmptyState, AppShell
 ├── features/
 │   ├── auth/     # authSlice, Login/Signup pages, controller hooks, Zod schemas
+│   ├── call/     # callSlice, WebRTC utils, realtime event bridge, CallPage
 │   └── toast/    # toastSlice, ToastHost, runWithToast
 ├── pages/        # HomePage (phase-1 landing), NotFoundPage (real 404)
 ├── routes/       # ROUTES constants, route tree, ProtectedRoute, PublicOnlyRoute
@@ -70,6 +71,7 @@ Redux Toolkit slices own all shared state; async work uses `createAsyncThunk`. T
 | `/` | protected | Home (authenticated landing) |
 | `/documents` | protected | Upload + manage documents |
 | `/chat`, `/chat/:id` | protected | RAG chat |
+| `/call` | protected | Live voice call (WebRTC) |
 | `*` | public | Real 404 page |
 
 ## Features
@@ -77,9 +79,10 @@ Redux Toolkit slices own all shared state; async work uses `createAsyncThunk`. T
 - **Documents** (`features/documents`): drag-or-click upload, status badges (`PROCESSING`/`READY`/`FAILED`) with polling while processing, and delete — all via `documentsSlice` + `useDocumentsPage`.
 - **Chat** (`features/chat`): sidebar of past chats (with inline **rename** and **delete**), message bubbles with **source-citation chips**, a composer, and a "no documents yet" notice — via `chatSlice` + `useChatPage`. Sending optimistically appends the user message, then renders the grounded answer. **Enter** sends, **Shift+Enter** adds a newline; a typing indicator shows while the model responds, and the view auto-scrolls to the latest message.
 - **Theme** (`features/theme`): light/dark toggle in the header, persisted to `localStorage` and defaulting to the OS preference; all colors come from CSS custom-property tokens in `styles/_tokens.scss`.
+- **Call** (`features/call`): a live voice call over WebRTC, connecting directly to OpenAI once the backend hands the browser a short-lived token — via `callSlice` + `useRealtimeCall`/`useRealtimeEvents`. "Start call" requests the microphone (never on page load), opens a peer connection and an `oai-events` data channel, and negotiates SDP against the `callsUrl` the backend returns (never hardcoded here). While live, `CallStatusBadge` shows connection state, `TranscriptPanel` shows the assistant's spoken answers as they stream in, and a `LookupIndicator` appears while the model is calling our `/realtime/retrieve` endpoint mid-conversation. "End call" (and unmounting/navigating away) always releases the microphone.
 
 ## Roadmap
 
 - **Phase 1:** foundation + auth (login, signup, session rehydration, route guarding). ✅
 - **Phase 2:** document upload UI and RAG chat. ✅
-- **Phase 3:** realtime voice call (WebRTC).
+- **Phase 3:** realtime voice call (WebRTC). ✅
